@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>redux</title>
+  </head>
+  <body>
+    <button id='btn'>加8</button>
+    <h1 id='h1'></h1>
+    <script src="./dist/bundle.js"></script>
+    <script>
+      const state = store.getState();
+      document.getElementById('btn').addEventListener('click',()=>{
+        store.dispatch({
+          type:'ADD',
+          num:8,
+        })
+        setTimeout(()=>{
+          document.getElementById('h1').innerHTML = store.getState().count.count;
+        },0)
+      })
+      document.getElementById('h1').innerHTML = state.count.count;
+    </script>
+  </body>
+</html>
