@@ -1,8 +1,12 @@
 import createStore from "./my-redux/createStore";
+import applyMiddleware from "./my-redux/applyMiddleware";
 import combineReducers from "./my-redux/combineReducers";
+import logger from "./my-middleware/logger";
+import thunk from "./my-middleware/redux-thunk";
 import allReducers from "./my-reducer";
-import { addCount } from "./my-actions/count";
+
+const applymidddleware = applyMiddleware(logger,thunk);
 const reducers = combineReducers(allReducers);
-const store = createStore(reducers);
+const store = createStore(reducers, applymidddleware)
+
 window.store = store;
-store.dispatch(addCount(1));
